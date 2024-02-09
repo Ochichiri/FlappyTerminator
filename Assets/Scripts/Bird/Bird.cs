@@ -31,7 +31,7 @@ public class Bird : MonoBehaviour
 
     private void ProcessCollision(IInteractable interactable)
     {
-        if (interactable is Pipe)
+        if (interactable is Enemy)
         {
             GameOver?.Invoke();
         }
@@ -39,6 +39,16 @@ public class Bird : MonoBehaviour
         else if (interactable is ScoreZone)
         {
             _scoreCounter.Add();
+        }
+
+        else if (interactable is EnemyBullet)
+        {
+            GameOver?.Invoke();
+        }
+
+        else if (interactable is Ground)
+        {
+            GameOver?.Invoke();
         }
     }
 
